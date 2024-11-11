@@ -13,3 +13,13 @@ output :
   "num": "123",
   "alpha": "Hello  World"
 }
+
+
+%dw 2.0
+import * from dw::core::Strings
+output application/json
+---
+{
+    "Num": payload filter (isNumeric($) ),
+    "Alpha": payload filter (isAlpha($) )
+}
